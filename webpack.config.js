@@ -1,0 +1,31 @@
+const { resolve } = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+const config = {
+  mode: 'development',
+  entry: './src/web/app.js',
+  output: {
+    path: resolve(__dirname, 'dist'),
+    filename: '[hash].app.js'
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        }
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: resolve(__dirname, 'src/web/app.html')
+    })
+  ]
+}
+module.exports = config
