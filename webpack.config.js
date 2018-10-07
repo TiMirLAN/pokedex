@@ -19,6 +19,19 @@ const config = {
         use: {
           loader: 'babel-loader'
         }
+      },
+      {
+        test: /\.styl$/,
+        use: [
+          { loader: 'style-loader/url' },
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[hash].css'
+            }
+          },
+          { loader: 'stylus-loader' }
+        ]
       }
     ]
   },

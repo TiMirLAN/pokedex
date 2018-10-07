@@ -5,6 +5,7 @@ const {
 } = require('react-redux')
 const store = require('./store')
 const PockemonList = require('./containers/pokemon-list')
+require('./app.styl')
 
 const ReduxApp = React.createElement(
   Provider,
