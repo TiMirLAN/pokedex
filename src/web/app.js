@@ -4,7 +4,7 @@ const {
   Provider
 } = require('react-redux')
 const store = require('./store')
-const PockemonList = require('./containers/pokemon-list')
+const PockemonPage = require('./components/pokemon-page')
 require('./app.styl')
 
 const ReduxApp = React.createElement(
@@ -12,7 +12,7 @@ const ReduxApp = React.createElement(
   {
     store
   },
-  React.createElement(PockemonList)
+  React.createElement(PockemonPage)
 )
 
 ReactDOM.render(
