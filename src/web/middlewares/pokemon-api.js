@@ -13,13 +13,16 @@ module.exports = store => next => action => {
   }
 
   const { resource, id, params, successAction, failedAction } = action
-  const path = `${resource}/${id || ''}`
+  const path = `${resource}/${id ? id + '/' : ''}`
 
   api
     .get(path, { params })
     .then(({ data }) => {
-      store.dispatch(successAction(data.results))
+      store.dispatch(successAction(data, id))
     })
-    .catch(() => { store.dispatch(failedAction()) })
+    .catch((e) => {
+      console.log(e)
+      store.dispatch(failedAction())
+    })
   next(action)
 }

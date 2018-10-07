@@ -32,6 +32,12 @@ const config = {
           },
           { loader: 'stylus-loader' }
         ]
+      },
+      {
+        test: /\.png$/,
+        use: [
+          { loader: 'file-loader' }
+        ]
       }
     ]
   },
