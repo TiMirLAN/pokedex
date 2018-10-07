@@ -1,15 +1,13 @@
 const React = require('react')
-const {
-  Row
-} = require('react-materialize')
+const Grid = require('@material-ui/core/Grid').default
 const PokemonList = require('../containers/pokemon-list')
 const PokemonPagination = require('../containers/pokemon-pagination')
 
 const PokemonPage = () => (
   <div>
-    <Row>
+    <Grid container spacing={24}>
       <PokemonList/>
-    </Row>
+    </Grid>
     <PokemonPagination/>
   </div>
 )

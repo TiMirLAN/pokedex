@@ -1,3 +1,4 @@
+import Pagination from 'material-ui-flat-pagination'
 const {
   connect
 } = require('react-redux')
@@ -5,11 +6,10 @@ const {
   compose
 } = require('recompose')
 const {
-  Pagination
-} = require('react-materialize')
-const {
   changeCurrentPage
 } = require('../actions/page')
+
+console.log(Pagination)
 
 const MAX_PAGINATION_BUTTONS = 5
 
