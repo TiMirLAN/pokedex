@@ -6,7 +6,7 @@ const {
 
 const PokemonList = ({ pokemonList }) => (
   pokemonList.map(pokemonItem => (
-    <Col m={6} s={12} l={3} key={pokemonItem.name}>
+    <Col m={6} s={12} l={4} key={pokemonItem.name}>
       <Card
         className='blue-grey'
         textClassName='white-text'

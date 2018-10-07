@@ -5,7 +5,7 @@ const {
   CHANGE_CURRENT_PAGE
 } = require('../actions/page')
 
-const DEFAULT_PER_PAGE = 20
+const DEFAULT_PER_PAGE = 12
 const DEFAULT_STATE = {
   perPage: DEFAULT_PER_PAGE,
   current: 0,

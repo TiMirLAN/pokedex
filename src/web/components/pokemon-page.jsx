@@ -6,10 +6,12 @@ const PokemonList = require('../containers/pokemon-list')
 const PokemonPagination = require('../containers/pokemon-pagination')
 
 const PokemonPage = () => (
-  <Row>
-    <PokemonList/>
+  <div>
+    <Row>
+      <PokemonList/>
+    </Row>
     <PokemonPagination/>
-  </Row>
+  </div>
 )
 
 module.exports = PokemonPage
