@@ -1,8 +1,10 @@
 const {
-  createStore
+  createStore,
 } = require('redux')
 const reducers = require('./reducers')
+const middlewares = require('./middlewares')
 
 module.exports = createStore(
-  reducers
+  reducers,
+  middlewares
 )

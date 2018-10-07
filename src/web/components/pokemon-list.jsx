@@ -7,8 +7,8 @@ class PokemonList extends React.Component {
     } = this.props
 
     return pokemonList.map(pokemonItem => (
-      <div key={pokemonItem.key}>
-        {pokemonItem.key}
+      <div key={pokemonItem.name}>
+        {pokemonItem.name}
       </div>
     ))
   }
