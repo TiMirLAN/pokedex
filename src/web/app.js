@@ -4,7 +4,7 @@ import {
   Provider
 } from 'react-redux'
 import store from './store'
-import PokemonPage from './components/pokemon-page'
+import PokemonPage from './components/pokemon-page/pokemon-page'
 import './app.styl'
 
 const ReduxApp = React.createElement(

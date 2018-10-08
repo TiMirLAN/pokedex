@@ -6,7 +6,7 @@ import {
   lifecycle,
   pure
 } from 'recompose'
-import PockemonList from '../components/pokemon-list'
+import PockemonList from '../components/pokemon-list/pokemon-list'
 import {
   requestPokemonList
 } from '../actions/pokemon'

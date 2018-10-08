@@ -1,7 +1,7 @@
 import {
   connect
 } from 'react-redux'
-import PokemonModal from '../components/pokemon-modal'
+import PokemonModal from '../components/pokemon-modal/pokemon-modal'
 import {
   closeModal
 } from '../actions/pokemon-modal'

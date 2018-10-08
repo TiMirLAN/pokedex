@@ -6,7 +6,7 @@ import {
   lifecycle,
   pure
 } from 'recompose'
-import PockemonCard from '../components/pokemon-card'
+import PockemonCard from '../components/pokemon-card/pokemon-card'
 import {
   RECEIVED
 } from '../helpers/api-storage'

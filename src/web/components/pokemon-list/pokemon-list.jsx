@@ -1,6 +1,6 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
-import PokemonCard from '../containers/pokemon-card'
+import PokemonCard from '../../containers/pokemon-card'
 
 const PokemonList = ({ pokemonList }) => (
   pokemonList.map(pokemonItem => (
