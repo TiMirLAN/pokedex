@@ -16,4 +16,6 @@ const PokemonPage = () => (
   </div>
 )
 
+PokemonPage.propTypes = {}
+
 export default PokemonPage

@@ -6,14 +6,16 @@ import {
   closeModal
 } from '../actions/pokemon-modal'
 
-const mapStateToProps = ({ modal, pokemonList }) => ({
-  isOpen: modal.isOpen,
-  pokemon: modal.pokemonId
+const mapStateToProps = ({ modal, pokemonList }) => {
+  const pokemon = modal.pokemonId
     ? pokemonList.items.find(({ id }) => modal.pokemonId === id)
-    : {
-      types: []
-    }
-})
+    : {}
+
+  return {
+    isOpen: modal.isOpen,
+    ...pokemon
+  }
+}
 
 const mapDispatchToProps = dispatch => ({
   onClose () {

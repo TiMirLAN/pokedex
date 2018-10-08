@@ -19,14 +19,10 @@ import {
 
 const mapDispatchToProps = (dispatch, ownState) => ({
   updateItem () {
-    const { id } = ownState.pokemonItem
-
-    dispatch(requestPokemonItem(id))
+    dispatch(requestPokemonItem(ownState.id))
   },
   openInfo () {
-    const { id } = ownState.pokemonItem
-
-    dispatch(openModal(id))
+    dispatch(openModal(ownState.id))
   }
 })
 
@@ -37,7 +33,7 @@ export default compose(
   ),
   lifecycle({
     componentDidMount () {
-      if (this.props.pokemonItem.state !== RECEIVED) {
+      if (this.props.state !== RECEIVED) {
         this.props.updateItem()
       }
     }

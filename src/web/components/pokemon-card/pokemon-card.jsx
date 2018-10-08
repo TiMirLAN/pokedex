@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import Card from '@material-ui/core/Card'
 import CardMedia from '@material-ui/core/CardMedia'
@@ -29,15 +30,22 @@ const BG_COLORS = {
   yellow: yellow[300]
 }
 
-const PokemonCard = ({ pokemonItem, openInfo }) => (
+const PokemonCard = ({
+  name,
+  coverUrl,
+  color,
+  genera,
+  types,
+  openInfo
+}) => (
   <Card
     style={{
-      backgroundColor: BG_COLORS[pokemonItem.color]
+      backgroundColor: BG_COLORS[color]
     }}
   >
     <div style={{ display: 'flex' }}>
       <CardMedia
-        image={pokemonItem.coverUrl}
+        image={coverUrl}
         style={{
           flex: '0 0 100px',
           maxHeight: '100%'
@@ -45,13 +53,13 @@ const PokemonCard = ({ pokemonItem, openInfo }) => (
       />
       <CardContent style={{ flex: '2 1' }}>
         <Typography component='h2' variant='headline'>
-          {pokemonItem.name}
+          {name}
         </Typography>
         <Typography variant='caption' gutterBottom>
-          {pokemonItem.genera}
+          {genera}
         </Typography>
         <Typography>
-          Types: {pokemonItem.types.join(', ')}
+          Types: {types.join(', ')}
         </Typography>
       </CardContent>
     </div>
@@ -64,5 +72,29 @@ const PokemonCard = ({ pokemonItem, openInfo }) => (
     </CardActions>
   </Card>
 )
+
+PokemonCard.propTypes = {
+  name: PropTypes.string,
+  coverUrl: PropTypes.string.isRequired,
+  color: PropTypes.oneOf([
+    'black',
+    'blue',
+    'brown',
+    'gray',
+    'green',
+    'pink',
+    'purple',
+    'red',
+    'white',
+    'yellow'
+  ]),
+  genera: PropTypes.arrayOf(
+    PropTypes.string
+  ).isRequired,
+  types: PropTypes.arrayOf(
+    PropTypes.string
+  ).isRequired,
+  openInfo: PropTypes.func
+}
 
 export default PokemonCard

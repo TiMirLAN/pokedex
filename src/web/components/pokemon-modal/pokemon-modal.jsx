@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import Modal from '@material-ui/core/Modal'
 import Card from '@material-ui/core/Card'
@@ -11,23 +12,42 @@ import TableCell from '@material-ui/core/TableCell'
 import TableBody from '@material-ui/core/TableBody'
 import TableHead from '@material-ui/core/TableHead';
 import CircularProgress from '@material-ui/core/CircularProgress'
+import {
+  REQUESTED,
+  RECEIVED,
+  FAILED
+} from '../helpers/api-storage'
 
-const PokemonModal = ({pokemon, isOpen, onClose}) => (
+const PokemonModal = ({
+  name,
+  coverUrl,
+  color,
+  genera,
+  types,
+  state,
+  isOpen,
+  weight,
+  height,
+  abilities,
+  species,
+  stats,
+  onClose
+}) => (
   <Modal
     open={isOpen}
     onClose={onClose}
   >
-    {pokemon.state !== 'RECEIVED'
+    {state !== RECEIVED
       ? <CircularProgress/>
       : <Card>
         <CardContent>
           <Typography
             component='h1'
             variant='headline'
-          >{pokemon.name}</Typography>
+          >{name}</Typography>
           <Grid container spacing={24}>
             <Grid item xs={12} sm={4}>
-              <img src={pokemon.coverUrl} width={192} height={192}/>
+              <img src={coverUrl} width={192} height={192}/>
             </Grid>
             <Grid item xs={12} sm={8}>
               <Table>
@@ -35,22 +55,22 @@ const PokemonModal = ({pokemon, isOpen, onClose}) => (
                   <TableRow>
                     <TableCell>Types</TableCell>
                     <TableCell>
-                      { pokemon.types.join(', ')}
+                      { types.join(', ')}
                     </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>Weight</TableCell>
-                    <TableCell>{pokemon.weight}</TableCell>
+                    <TableCell>{weight}</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>Height</TableCell>
-                    <TableCell>{pokemon.height}</TableCell>
+                    <TableCell>{height}</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>Abilities</TableCell>
                     <TableCell>
                       <ul>
-                        {pokemon.abilities.map(abil => (
+                        {abilities.map(abil => (
                           <li key={abil}>{abil}</li>
                         ))}
                       </ul>
@@ -58,15 +78,15 @@ const PokemonModal = ({pokemon, isOpen, onClose}) => (
                   </TableRow>
                   <TableRow>
                     <TableCell>Species</TableCell>
-                    <TableCell>{pokemon.species}</TableCell>
+                    <TableCell>{species}</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>Genera</TableCell>
-                    <TableCell>{pokemon.genera}</TableCell>
+                    <TableCell>{genera}</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>Color</TableCell>
-                    <TableCell>{pokemon.color}</TableCell>
+                    <TableCell>{color}</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
@@ -75,16 +95,16 @@ const PokemonModal = ({pokemon, isOpen, onClose}) => (
               <Table>
                 <TableHead>
                   <TableRow>
-                    {pokemon.stats.names.map(name => (
+                    {stats.names.map(name => (
                       <TableCell key={name}>{name}</TableCell>
                     ))}
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   <TableRow>
-                    {pokemon.stats.values.map((value, i) => (
+                    {stats.values.map((value, i) => (
                       <TableCell
-                        key={pokemon.stats.names[i]}
+                        key={stats.names[i]}
                       >{value}</TableCell>
                     ))}
                   </TableRow>
@@ -97,5 +117,49 @@ const PokemonModal = ({pokemon, isOpen, onClose}) => (
     }
   </Modal>
 )
+
+PokemonModal.propTypes = {
+  name: PropTypes.string,
+  coverUrl: PropTypes.string,
+  color: PropTypes.oneOf([
+    'black',
+    'blue',
+    'brown',
+    'gray',
+    'green',
+    'pink',
+    'purple',
+    'red',
+    'white',
+    'yellow'
+  ]),
+  genera: PropTypes.arrayOf(
+    PropTypes.string
+  ),
+  types: PropTypes.arrayOf(
+    PropTypes.string
+  ),
+  state: PropTypes.oneOf([
+    REQUESTED,
+    RECEIVED,
+    FAILED
+  ]),
+  isOpen: PropTypes.bool,
+  weight: PropTypes.number,
+  height: PropTypes.number,
+  abilities: PropTypes.arrayOf([
+    PropTypes.string
+  ]),
+  species: PropTypes.string,
+  stats: PropTypes.shape({
+    0: PropTypes.arrayOf([
+      PropTypes.string
+    ]),
+    1: PropTypes.arrayOf([
+      PropTypes.number
+    ])
+  }),
+  onClose: PropTypes.func
+}
 
 export default PokemonModal
