@@ -18,7 +18,8 @@ const mapStateToProps = ({ pokemonList, page }) => {
       .slice(
         page.offset,
         page.offset + page.perPage
-      )
+      ),
+    listStatus: pokemonList.status
   }
 }
 const mapDispatchToProps = dispatch => ({
