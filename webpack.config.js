@@ -30,13 +30,30 @@ const config = {
               name: '[hash].css'
             }
           },
-          { loader: 'stylus-loader' }
+          {
+            loader: 'stylus-loader',
+            options: {
+              'include css': true,
+              preferPathResolver: 'webpack'
+            }
+          }
         ]
       },
       {
         test: /\.png$/,
         use: [
           { loader: 'file-loader' }
+        ]
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        use: [
+          {
+            loader: 'file-loader?'
+          },
+          {
+            loader: 'file-loader?'
+          }
         ]
       }
     ]

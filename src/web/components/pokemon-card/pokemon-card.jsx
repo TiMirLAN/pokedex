@@ -43,15 +43,12 @@ const PokemonCard = ({
       backgroundColor: BG_COLORS[color]
     }}
   >
-    <div style={{ display: 'flex' }}>
+    <div className='pokemon-card'>
       <CardMedia
         image={coverUrl}
-        style={{
-          flex: '0 0 100px',
-          maxHeight: '100%'
-        }}
+        className='pokemon-card-cover'
       />
-      <CardContent style={{ flex: '2 1' }}>
+      <CardContent className='pokemon-card-content'>
         <Typography component='h2' variant='headline'>
           {name}
         </Typography>
@@ -63,7 +60,7 @@ const PokemonCard = ({
         </Typography>
       </CardContent>
     </div>
-    <CardActions style={{ backgroundColor: 'white' }}>
+    <CardActions className='pokemon-card-actions'>
       <Button
         size='small'
         color='primary'

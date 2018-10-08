@@ -5,7 +5,7 @@ import PokemonPagination from '../../containers/pokemon-pagination'
 import PokemonModal from '../../containers/pokemon-modal'
 
 const PokemonPage = () => (
-  <div>
+  <div className='pokemon-page'>
     <Grid container spacing={24}>
       <PokemonList/>
       <Grid item xs={12}>

@@ -35,18 +35,26 @@ const PokemonModal = ({
   <Modal
     open={isOpen}
     onClose={onClose}
+    className='pokemon-modal'
   >
     {state !== RECEIVED
       ? <CircularProgress/>
-      : <Card>
+      : <Card
+        className='pokemon-modal-card'
+      >
         <CardContent>
+          {/* close button required */}
+          {/* availability attributes required */}
           <Typography
             component='h1'
             variant='headline'
           >{name}</Typography>
           <Grid container spacing={24}>
-            <Grid item xs={12} sm={4}>
-              <img src={coverUrl} width={192} height={192}/>
+            <Grid item xs={12} sm={4} className='pokemon-modal-card-cover'>
+              <img
+                src={coverUrl}
+                className='pokemon-modal-card-cover__image'
+              />
             </Grid>
             <Grid item xs={12} sm={8}>
               <Table>
@@ -90,7 +98,7 @@ const PokemonModal = ({
                 </TableBody>
               </Table>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} className='pokemon-modal-card-stats'>
               <Table>
                 <TableHead>
                   <TableRow>
