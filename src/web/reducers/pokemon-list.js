@@ -65,7 +65,7 @@ function preparePokemonItem (pokemonApiItem) {
 
   return {
     state: RECEIVED,
-    coverUrl: sprites.front_default,
+    coverUrl: sprites.front_default || ballPng,
     types: getTypes(types),
     abilities: getAbilities(abilities),
     species: capitalize(species.name),
@@ -79,8 +79,9 @@ function preparePokemonItem (pokemonApiItem) {
 
 function updateCollectionItem (state, id, update) {
   let index = id - 1
+  const supposedItem = state.items[index]
 
-  if (state.items[index].id !== id) {
+  if (supposedItem == null || supposedItem.id !== id) {
     index = state.items.findIndex(item => item.id === id)
   }
 
