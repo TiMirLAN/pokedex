@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "web:build": "webpack --mode production",
-    "web:develop": "webpack-dev-server"
+    "web:develop": "webpack-dev-server",
+    "eslint": "eslint src/*",
+    "eslint:fix": "eslint --fix src/*"
   },
   "keywords": [],
   "author": "Tim Mironov <timirlan666@gmail.com>",
@@ -14,9 +16,7 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-node": "7.0.1",
     "eslint-plugin-promise": "4.0.1",
-    "eslint-plugin-standard": "4.0.0",
-    "stylus": "0.54.5",
-    "stylus-loader": "3.0.2"
+    "eslint-plugin-standard": "4.0.0"
   },
   "dependencies": {
     "@babel/core": "7.1.2",
@@ -38,6 +38,8 @@
     "recompose": "0.30.0",
     "redux": "4.0.0",
     "style-loader": "0.23.0",
+    "stylus": "0.54.5",
+    "stylus-loader": "3.0.2",
     "webpack": "4.20.2",
     "webpack-cli": "3.1.2",
     "webpack-dev-server": "3.1.9"

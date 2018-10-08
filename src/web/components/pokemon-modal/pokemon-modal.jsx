@@ -5,12 +5,11 @@ import Modal from '@material-ui/core/Modal'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Grid from '@material-ui/core/Grid'
-import Chip from '@material-ui/core/Chip'
 import Table from '@material-ui/core/Table'
 import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
 import TableBody from '@material-ui/core/TableBody'
-import TableHead from '@material-ui/core/TableHead';
+import TableHead from '@material-ui/core/TableHead'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import {
   REQUESTED,

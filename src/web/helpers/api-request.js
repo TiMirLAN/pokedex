@@ -6,4 +6,3 @@ export const apiRequestAction = (
 })
 
 export const isNotApiRequest = (action) => !action.isApiRequest
-

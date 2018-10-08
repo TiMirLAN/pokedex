@@ -11,7 +11,6 @@ import {
   failPokemonItem
 } from '../actions/pokemon'
 
-
 const api = axios.create({
   baseURL: 'https://pokeapi.co/api/v2/'
 })
