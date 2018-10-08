@@ -83,9 +83,7 @@ PokemonCard.propTypes = {
     'white',
     'yellow'
   ]),
-  genera: PropTypes.arrayOf(
-    PropTypes.string
-  ).isRequired,
+  genera: PropTypes.string,
   types: PropTypes.arrayOf(
     PropTypes.string
   ).isRequired,

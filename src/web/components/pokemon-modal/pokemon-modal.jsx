@@ -140,9 +140,7 @@ PokemonModal.propTypes = {
     'white',
     'yellow'
   ]),
-  genera: PropTypes.arrayOf(
-    PropTypes.string
-  ),
+  genera: PropTypes.string,
   types: PropTypes.arrayOf(
     PropTypes.string
   ),
@@ -154,17 +152,17 @@ PokemonModal.propTypes = {
   isOpen: PropTypes.bool,
   weight: PropTypes.number,
   height: PropTypes.number,
-  abilities: PropTypes.arrayOf([
+  abilities: PropTypes.arrayOf(
     PropTypes.string
-  ]),
+  ),
   species: PropTypes.string,
   stats: PropTypes.shape({
-    0: PropTypes.arrayOf([
+    0: PropTypes.arrayOf(
       PropTypes.string
-    ]),
-    1: PropTypes.arrayOf([
+    ),
+    1: PropTypes.arrayOf(
       PropTypes.number
-    ])
+    )
   }),
   onClose: PropTypes.func
 }
