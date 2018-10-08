@@ -1,22 +1,25 @@
-const {
+import {
   connect
-} = require('react-redux')
-const {
+} from 'react-redux'
+import {
   compose,
   lifecycle,
   pure
-} = require('recompose')
-const PockemonList = require('../components/pokemon-list')
-const {
+} from 'recompose'
+import PockemonList from '../components/pokemon-list'
+import {
   requestPokemonList
-} = require('../actions/pokemon')
+} from '../actions/pokemon'
 
 const mapStateToProps = ({ pokemonList, page }) => {
-  const listFrom = page.current * page.perPage
+  console.log(page)
   return {
     pokemonList: pokemonList
       .items
-      .slice(listFrom, listFrom + page.perPage)
+      .slice(
+        page.offset,
+        page.offset + page.perPage
+      )
   }
 }
 const mapDispatchToProps = dispatch => ({
@@ -25,7 +28,7 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-module.exports = compose(
+export default compose(
   connect(
     mapStateToProps,
     mapDispatchToProps

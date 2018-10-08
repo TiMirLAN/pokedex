@@ -1,6 +1,6 @@
-const React = require('react')
-const Grid = require('@material-ui/core/Grid').default
-const PokemonCard = require('../containers/pokemon-card')
+import React from 'react'
+import Grid from '@material-ui/core/Grid'
+import PokemonCard from '../containers/pokemon-card'
 
 const PokemonList = ({ pokemonList }) => (
   pokemonList.map(pokemonItem => (
@@ -10,4 +10,4 @@ const PokemonList = ({ pokemonList }) => (
   ))
 )
 
-module.exports = PokemonList
+export default PokemonList

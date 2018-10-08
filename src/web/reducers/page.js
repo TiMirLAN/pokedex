@@ -7,19 +7,17 @@ const {
 
 const DEFAULT_PER_PAGE = 12
 const DEFAULT_STATE = {
-  perPage: DEFAULT_PER_PAGE,
-  current: 0,
-  total: 0
+  offset: 0,
+  total: 0,
+  perPage: DEFAULT_PER_PAGE
 }
 
 module.exports = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
     case RECEIVE_POKEMON_LIST:
-      const total = Math.ceil(action.list.length / state.perPage)
-
-      return { ...state, total }
+      return { ...state, total: action.list.length }
     case CHANGE_CURRENT_PAGE:
-      return { ...state, current: action.page }
+      return { ...state, offset: action.page }
     default:
       return state
   }

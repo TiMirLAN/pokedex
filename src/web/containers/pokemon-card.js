@@ -1,18 +1,18 @@
-const {
+import {
   connect
-} = require('react-redux')
-const {
+} from 'react-redux'
+import {
   compose,
   lifecycle,
   pure
-} = require('recompose')
-const PockemonCard = require('../components/pokemon-card')
-const {
+} from 'recompose'
+import PockemonCard from '../components/pokemon-card'
+import {
   RECEIVED
-} = require('../helpers/api-storage')
-const {
+} from '../helpers/api-storage'
+import {
   requestPokemonItem
-} = require('../actions/pokemon')
+} from '../actions/pokemon'
 
 const mapDispatchToProps = (dispatch, ownState) => ({
   updateItem () {
@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch, ownState) => ({
   }
 })
 
-module.exports = compose(
+export default compose(
   connect(
     null,
     mapDispatchToProps
@@ -33,5 +33,6 @@ module.exports = compose(
         this.props.updateItem()
       }
     }
-  })
+  }),
+  pure
 )(PockemonCard)

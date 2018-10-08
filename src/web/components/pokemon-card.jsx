@@ -1,11 +1,11 @@
-const React = require('react')
-const Typography = require('@material-ui/core/Typography').default
-const Card = require('@material-ui/core/Card').default
-const CardMedia = require('@material-ui/core/CardMedia').default
-const CardContent = require('@material-ui/core/CardContent').default
-const Chip = require('@material-ui/core/Chip').default
-const CardActions = require('@material-ui/core/CardActions').default
-const Button = require('@material-ui/core/Button').default
+import React from 'react'
+import Typography from '@material-ui/core/Typography'
+import Card from '@material-ui/core/Card'
+import CardMedia from '@material-ui/core/CardMedia'
+import CardContent from '@material-ui/core/CardContent'
+import Chip from '@material-ui/core/Chip'
+import CardActions from '@material-ui/core/CardActions'
+import Button from '@material-ui/core/Button'
 
 /*
 const PokemonCard = ({ pokemonItem }) => (
@@ -45,4 +45,4 @@ const PokemonCard = ({ pokemonItem }) => (
   </Card>
 )
 
-module.exports = PokemonCard
+export default PokemonCard

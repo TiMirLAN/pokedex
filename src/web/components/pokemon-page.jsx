@@ -1,15 +1,17 @@
-const React = require('react')
-const Grid = require('@material-ui/core/Grid').default
-const PokemonList = require('../containers/pokemon-list')
-const PokemonPagination = require('../containers/pokemon-pagination')
+import React from 'react'
+import Grid from '@material-ui/core/Grid'
+import PokemonList from '../containers/pokemon-list'
+import PokemonPagination from '../containers/pokemon-pagination'
 
 const PokemonPage = () => (
   <div>
     <Grid container spacing={24}>
       <PokemonList/>
+      <Grid item xs={12}>
+        <PokemonPagination/>
+      </Grid>
     </Grid>
-    <PokemonPagination/>
   </div>
 )
 
-module.exports = PokemonPage
+export default PokemonPage

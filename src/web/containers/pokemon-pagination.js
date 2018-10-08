@@ -1,31 +1,27 @@
-import Pagination from 'material-ui-flat-pagination'
-const {
+import {
   connect
-} = require('react-redux')
-const {
+} from 'react-redux'
+import {
   compose
-} = require('recompose')
-const {
+} from 'recompose'
+import Pagination from 'material-ui-flat-pagination'
+import {
   changeCurrentPage
-} = require('../actions/page')
-
-console.log(Pagination)
-
-const MAX_PAGINATION_BUTTONS = 5
+} from '../actions/page'
 
 const mapStateToProps = ({ page }) => ({
-  items: page.total,
-  activePage: page.current + 1,
-  maxButtons: MAX_PAGINATION_BUTTONS
+  total: page.total,
+  offset: page.offset,
+  limit: page.perPage
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onSelect (newPage) {
-    dispatch(changeCurrentPage(newPage - 1))
+  onClick (e, offset) {
+    dispatch(changeCurrentPage(offset))
   }
 })
 
-module.exports = compose(
+export default compose(
   connect(
     mapStateToProps,
     mapDispatchToProps
