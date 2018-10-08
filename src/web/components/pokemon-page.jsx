@@ -2,6 +2,7 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import PokemonList from '../containers/pokemon-list'
 import PokemonPagination from '../containers/pokemon-pagination'
+import PokemonModal from '../containers/pokemon-modal'
 
 const PokemonPage = () => (
   <div>
@@ -11,6 +12,7 @@ const PokemonPage = () => (
         <PokemonPagination/>
       </Grid>
     </Grid>
+    <PokemonModal/>
   </div>
 )
 

@@ -1,14 +1,14 @@
-const {
+import {
   applyMiddleware
-} = require('redux')
-const pokemonApi = require('./pokemon-api')
+} from 'redux'
+import pokemonApi from './pokemon-api'
 
 const logging = store => next => action => {
   console.log(action)
   return next(action)
 }
 
-module.exports = applyMiddleware(
+export default applyMiddleware(
   logging,
   pokemonApi
 )

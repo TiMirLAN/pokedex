@@ -1,10 +1,10 @@
-const {
-  createStore,
-} = require('redux')
-const reducers = require('./reducers')
-const middlewares = require('./middlewares')
+import {
+  createStore
+} from 'redux'
+import reducers from './reducers'
+import middlewares from './middlewares'
 
-module.exports = createStore(
+export default createStore(
   reducers,
   middlewares
 )

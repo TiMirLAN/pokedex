@@ -1,9 +1,9 @@
-const {
+import {
   RECEIVE_POKEMON_LIST
-} = require('../actions/pokemon')
-const {
+} from '../actions/pokemon'
+import {
   CHANGE_CURRENT_PAGE
-} = require('../actions/page')
+} from '../actions/page'
 
 const DEFAULT_PER_PAGE = 12
 const DEFAULT_STATE = {
@@ -12,7 +12,7 @@ const DEFAULT_STATE = {
   perPage: DEFAULT_PER_PAGE
 }
 
-module.exports = (state = DEFAULT_STATE, action) => {
+export default (state = DEFAULT_STATE, action) => {
   switch (action.type) {
     case RECEIVE_POKEMON_LIST:
       return { ...state, total: action.list.length }

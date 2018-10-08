@@ -1,58 +1,36 @@
-const {
+import {
   apiRequestAction
-} = require('../helpers/api-request')
+} from '../helpers/api-request'
 
-const REQUEST_POKEMON_LIST = 'REQUEST_POKEMON_LIST'
-const RECEIVE_POKEMON_LIST = 'RECEIVE_POKEMON_LIST'
-const FAIL_POKEMON_LIST = 'FAIL_POKEMON_LIST'
-const REQUEST_POKEMON_ITEM = 'REQUEST_POKEMON_ITEM'
-const RECEIVE_POKEMON_ITEM = 'RECEIVE_POKEMON_ITEM'
-const FAIL_POKEMON_ITEM = 'FAIL_POKEMON_ITEM'
+export const REQUEST_POKEMON_LIST = 'REQUEST_POKEMON_LIST'
+export const RECEIVE_POKEMON_LIST = 'RECEIVE_POKEMON_LIST'
+export const FAIL_POKEMON_LIST = 'FAIL_POKEMON_LIST'
+export const REQUEST_POKEMON_ITEM = 'REQUEST_POKEMON_ITEM'
+export const RECEIVE_POKEMON_ITEM = 'RECEIVE_POKEMON_ITEM'
+export const FAIL_POKEMON_ITEM = 'FAIL_POKEMON_ITEM'
 
-const receivePokemonList = data => ({
+export const receivePokemonList = list => ({
   type: RECEIVE_POKEMON_LIST,
-  list: data.results
+  list
 })
 
-const failPokemonList = () => ({ type: FAIL_POKEMON_LIST })
+export const failPokemonList = () => ({ type: FAIL_POKEMON_LIST })
 
-const requestPokemonList = () => apiRequestAction(
-  REQUEST_POKEMON_LIST,
-  'pokemon',
-  null,
-  null,
-  receivePokemonList,
-  failPokemonList
-)
+export const requestPokemonList = () => ({
+  ...apiRequestAction(),
+  type: REQUEST_POKEMON_LIST
+})
 
-const receivePokemonItem = (item, id) => ({
+export const receivePokemonItem = (item, id) => ({
   type: RECEIVE_POKEMON_ITEM,
   item,
   id
 })
 
-const failPokemonItem = () => ({ type: FAIL_POKEMON_ITEM })
+export const failPokemonItem = () => ({ type: FAIL_POKEMON_ITEM })
 
-const requestPokemonItem = (id) => apiRequestAction(
-  REQUEST_POKEMON_ITEM,
-  'pokemon',
-  id,
-  null,
-  receivePokemonItem,
-  failPokemonItem
-)
-
-module.exports = {
-  REQUEST_POKEMON_LIST,
-  RECEIVE_POKEMON_LIST,
-  FAIL_POKEMON_LIST,
-  REQUEST_POKEMON_ITEM,
-  RECEIVE_POKEMON_ITEM,
-  FAIL_POKEMON_ITEM,
-  requestPokemonList,
-  receivePokemonList,
-  failPokemonList,
-  requestPokemonItem,
-  receivePokemonItem,
-  failPokemonItem
-}
+export const requestPokemonItem = (id) => ({
+  ...apiRequestAction(),
+  type: REQUEST_POKEMON_ITEM,
+  id
+})

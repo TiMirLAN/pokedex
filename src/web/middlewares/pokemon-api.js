@@ -1,28 +1,83 @@
-const axios = require('axios')
-const {
+import axios from 'axios'
+import {
   isNotApiRequest
-} = require('../helpers/api-request')
+} from '../helpers/api-request'
+import {
+  REQUEST_POKEMON_LIST,
+  REQUEST_POKEMON_ITEM,
+  receivePokemonList,
+  receivePokemonItem,
+  failPokemonList,
+  failPokemonItem
+} from '../actions/pokemon'
+
 
 const api = axios.create({
   baseURL: 'https://pokeapi.co/api/v2/'
 })
 
-module.exports = store => next => action => {
+export default store => next => action => {
   if (isNotApiRequest(action)) {
     return next(action)
   }
 
-  const { resource, id, params, successAction, failedAction } = action
-  const path = `${resource}/${id ? id + '/' : ''}`
-
-  api
-    .get(path, { params })
-    .then(({ data }) => {
-      store.dispatch(successAction(data, id))
-    })
-    .catch((e) => {
-      console.log(e)
-      store.dispatch(failedAction())
-    })
+  switch (action.type) {
+    case REQUEST_POKEMON_LIST:
+      api
+        .get('pokemon/')
+        .then(({ data }) => {
+          store.dispatch(receivePokemonList(data.results))
+        })
+        .catch((e) => {
+          console.warn(e)
+          store.dispatch(failPokemonList())
+        })
+      break
+    case REQUEST_POKEMON_ITEM:
+      api
+        .get(`pokemon/${action.id}/`)
+        .then(({ data }) => {
+          const { species } = data
+          return axios
+            .get(species.url)
+            .then(response => ({
+              ...data,
+              species: {
+                ...species,
+                ...response.data
+              }
+            }))
+        })
+        .then(merged => (
+          axios
+            .get(
+              merged
+                .species
+                .evolution_chain
+                .url
+            ).then(({ data }) => ({
+              ...merged,
+              species: {
+                ...merged.species,
+                evolution_chain: {
+                  ...merged.species.evolution_chain,
+                  ...data
+                }
+              }
+            }))
+        ))
+        .then(merged => {
+          console.log(merged)
+          store.dispatch(receivePokemonItem(
+            merged,
+            action.id
+          ))
+        })
+        .catch((e) => {
+          console.warn(e)
+          store.dispatch(failPokemonItem())
+        })
+      break
+  }
   next(action)
 }

@@ -13,12 +13,20 @@ import {
 import {
   requestPokemonItem
 } from '../actions/pokemon'
+import {
+  openModal
+} from '../actions/pokemon-modal'
 
 const mapDispatchToProps = (dispatch, ownState) => ({
   updateItem () {
     const { id } = ownState.pokemonItem
 
     dispatch(requestPokemonItem(id))
+  },
+  openInfo () {
+    const { id } = ownState.pokemonItem
+
+    dispatch(openModal(id))
   }
 })
 

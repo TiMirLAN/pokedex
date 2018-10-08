@@ -1,22 +1,9 @@
-const apiRequestAction = (
-  type,
-  resource,
-  id,
-  params,
-  successAction,
-  failedAction
+export const apiRequestAction = (
+  params
 ) => ({
-  type,
-  resource,
-  id,
   params,
-  successAction,
-  failedAction,
   isApiRequest: true
 })
-const isNotApiRequest = (action) => !action.isApiRequest
 
-module.exports = {
-  apiRequestAction,
-  isNotApiRequest
-}
+export const isNotApiRequest = (action) => !action.isApiRequest
+
