@@ -12,7 +12,6 @@ import {
 } from '../actions/pokemon'
 
 const mapStateToProps = ({ pokemonList, page }) => {
-  console.log(page)
   return {
     pokemonList: pokemonList
       .items
