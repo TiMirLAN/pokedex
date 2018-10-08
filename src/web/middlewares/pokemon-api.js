@@ -47,6 +47,8 @@ export default store => next => action => {
               }
             }))
         })
+      // Have no time to make a renderer for evolution chain.
+      /*
         .then(merged => (
           axios
             .get(
