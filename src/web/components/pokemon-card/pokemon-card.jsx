@@ -7,23 +7,23 @@ import CardContent from '@material-ui/core/CardContent'
 import CardActions from '@material-ui/core/CardActions'
 import Button from '@material-ui/core/Button'
 import blue from '@material-ui/core/colors/blue'
-import brown from '@material-ui/core/colors/brown'
 import grey from '@material-ui/core/colors/grey'
 import green from '@material-ui/core/colors/green'
 import pink from '@material-ui/core/colors/pink'
 import purple from '@material-ui/core/colors/purple'
-import red from '@material-ui/core/colors/red'
+import orange from '@material-ui/core/colors/orange'
 import yellow from '@material-ui/core/colors/yellow'
 
 const BG_COLORS = {
   black: grey[600],
   blue: blue[300],
-  brown: brown[300],
+  // See docs about orange https://pokeapi.co/docs/v2.html#pok%C3%A9mon-colors
+  brown: orange[300],
   gray: grey[300],
   green: green[300],
   pink: pink[300],
   purple: purple[300],
-  red: red[300],
+  red: orange[300],
   white: 'white',
   yellow: yellow[300]
 }
