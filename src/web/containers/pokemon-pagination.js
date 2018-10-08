@@ -2,7 +2,9 @@ import {
   connect
 } from 'react-redux'
 import {
-  compose
+  compose,
+  branch,
+  renderNothing
 } from 'recompose'
 import Pagination from 'material-ui-flat-pagination'
 import {
@@ -25,5 +27,9 @@ export default compose(
   connect(
     mapStateToProps,
     mapDispatchToProps
+  ),
+  branch(
+    props => props.total === 0,
+    renderNothing
   )
 )(Pagination)
