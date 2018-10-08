@@ -1,0 +1,14 @@
+const REQUESTED = 'REQUESTING'
+const RECEIVED = 'RECEIVED'
+const FAILED = 'FAILED'
+
+const DEFAULT_API_ITEM = {
+  status: RECEIVED
+}
+
+module.exports = {
+  DEFAULT_API_ITEM,
+  REQUESTED,
+  RECEIVED,
+  FAILED
+}

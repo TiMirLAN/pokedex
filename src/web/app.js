@@ -1,17 +1,18 @@
-const React = require('react')
-const ReactDOM = require('react-dom')
-const {
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {
   Provider
-} = require('react-redux')
-const store = require('./store')
-const PockemonList = require('./containers/pokemon-list')
+} from 'react-redux'
+import store from './store'
+import PokemonPage from './components/pokemon-page/pokemon-page'
+import './app.styl'
 
 const ReduxApp = React.createElement(
   Provider,
   {
     store
   },
-  React.createElement(PockemonList)
+  React.createElement(PokemonPage)
 )
 
 ReactDOM.render(

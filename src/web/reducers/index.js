@@ -1,8 +1,12 @@
-const {
+import {
   combineReducers
-} = require('redux')
-const pokemonList = require('./pokemon-list')
+} from 'redux'
+import pokemonList from './pokemon-list'
+import page from './page'
+import modal from './pokemon-modal'
 
-module.exports = combineReducers({
-  pokemonList
+export default combineReducers({
+  pokemonList,
+  page,
+  modal
 })
