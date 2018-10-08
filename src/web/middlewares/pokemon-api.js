@@ -65,8 +65,8 @@ export default store => next => action => {
               }
             }))
         ))
+      */
         .then(merged => {
-          console.log(merged)
           store.dispatch(receivePokemonItem(
             merged,
             action.id

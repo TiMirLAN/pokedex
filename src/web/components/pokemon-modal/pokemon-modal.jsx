@@ -15,7 +15,7 @@ import {
   REQUESTED,
   RECEIVED,
   FAILED
-} from '../helpers/api-storage'
+} from '../../helpers/api-storage'
 
 const PokemonModal = ({
   name,
