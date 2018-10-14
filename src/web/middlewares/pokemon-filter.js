@@ -12,9 +12,9 @@ import defer from 'lodash/fp/defer'
 function filterPokemonItems (store) {
   const {
     filter,
-    pokemonList
+    pokemons
   } = store.getState()
-  const filterResults = pokemonList
+  const filterResults = pokemons
     .items
     .map(item => item[filter.field])
     .reduce((result, fieldValue, itemIndex) => {
@@ -37,10 +37,10 @@ function filterPokemonItems (store) {
 }
 
 function afterDropFilter (store) {
-  const { pokemonList } = store.getState()
+  const { pokemons } = store.getState()
 
   store.dispatch(resetCurrentPage())
-  store.dispatch(changePaginationTotal(pokemonList.items.length))
+  store.dispatch(changePaginationTotal(pokemons.items.length))
 }
 
 export default store => next => action => {
