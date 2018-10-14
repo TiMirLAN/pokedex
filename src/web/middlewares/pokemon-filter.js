@@ -1,20 +1,28 @@
 import {
   UPDATE_FILTER,
   DROP_FILTER,
-  updateFilterItems,
+  updateFilterItems
 } from '../actions/pokemon-filter'
 import {
   changePaginationTotal,
   resetCurrentPage
 } from '../actions/page'
 import defer from 'lodash/fp/defer'
+import orderBy from 'lodash/fp/orderBy'
+import flow from 'lodash/fp/flow'
+import map from 'lodash/fp/map'
+
+const makeOrderedIndexes = flow(
+  orderBy('order', 'asc'),
+  map('index')
+)
 
 function filterPokemonItems (store) {
   const {
     filter,
     pokemons
   } = store.getState()
-  const filterResults = pokemons
+  const filterData = pokemons
     .items
     .map(item => item[filter.field])
     .reduce((result, fieldValue, itemIndex) => {
@@ -23,13 +31,13 @@ function filterPokemonItems (store) {
       if (fieldValue.indexOf(filter.query) >= 0) {
         result.push({
           order: fieldOffset,
-          index: itemIndex
+          index: itemIndex,
+          value: fieldValue
         })
       }
       return result
     }, [])
-    .sort((a, b) => a.order > b.order)
-    .map(({ index }) => index)
+  const filterResults = makeOrderedIndexes(filterData)
 
   store.dispatch(updateFilterItems(filterResults))
   store.dispatch(resetCurrentPage())
