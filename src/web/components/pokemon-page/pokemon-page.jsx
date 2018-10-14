@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import PokemonList from '../../containers/pokemon-list'
 import PokemonPagination from '../../containers/pokemon-pagination'
 import PokemonModal from '../../containers/pokemon-modal'
-import PokemonSearch from '../pokemon-search/pokemon-search'
+import PokemonSearch from '../../containers/pokemon-search'
 
 const PokemonPage = () => (
   <div className='pokemon-page'>
