@@ -3,28 +3,13 @@ import flow from 'lodash/fp/flow'
 import map from 'lodash/fp/map'
 import find from 'lodash/fp/find'
 import sortBy from 'lodash/fp/sortBy'
+import {
+  RECEIVED
+} from '../../helpers/api-storage'
 import zip from 'lodash/zip'
-import {
-  REQUESTED,
-  RECEIVED,
-  FAILED
-} from '../helpers/api-storage'
-import {
-  REQUEST_POKEMON_LIST,
-  RECEIVE_POKEMON_LIST,
-  FAIL_POKEMON_LIST,
-  REQUEST_POKEMON_ITEM,
-  RECEIVE_POKEMON_ITEM,
-  FAIL_POKEMON_ITEM
-} from '../actions/pokemon'
-import ballPng from '../assets/ball.png'
+import ballPng from '../../assets/ball.png'
 
-const DEFAULT_STATE = {
-  status: RECEIVED,
-  items: []
-}
-
-function preparePokemonListItem (pokemonApiListItem) {
+export function preparePokemonListItem (pokemonApiListItem) {
   return {
     name: capitalize(pokemonApiListItem.name),
     id: +pokemonApiListItem.url.slice(34, -1),
@@ -51,7 +36,7 @@ const getStats = (stats) => (
   )
 )
 
-function preparePokemonItem (pokemonApiItem) {
+export function preparePokemonItem (pokemonApiItem) {
   const {
     sprites,
     types,
@@ -77,7 +62,7 @@ function preparePokemonItem (pokemonApiItem) {
   }
 }
 
-function updateCollectionItem (state, id, update) {
+export function updateCollectionItem (state, id, update) {
   let index = id - 1
   const supposedItem = state.items[index]
 
@@ -97,37 +82,5 @@ function updateCollectionItem (state, id, update) {
       newItem,
       ...state.items.slice(index + 1)
     ]
-  }
-}
-
-export default (state = DEFAULT_STATE, action) => {
-  switch (action.type) {
-    case REQUEST_POKEMON_LIST:
-      return { ...state, status: REQUESTED }
-    case RECEIVE_POKEMON_LIST:
-      // action.list is sorted by id already
-      const items = action
-        .list
-        .map(preparePokemonListItem)
-
-      return { ...state, status: RECEIVED, items }
-    case FAIL_POKEMON_LIST:
-      return { ...state, status: FAILED }
-    case REQUEST_POKEMON_ITEM:
-      return updateCollectionItem(
-        state,
-        action.id,
-        { state: REQUESTED }
-      )
-    case RECEIVE_POKEMON_ITEM:
-      return updateCollectionItem(
-        state,
-        action.id,
-        preparePokemonItem(action.item)
-      )
-    case FAIL_POKEMON_ITEM:
-      return { ...state, status: FAILED }
-    default:
-      return state
   }
 }
