@@ -11,6 +11,7 @@ import TableCell from '@material-ui/core/TableCell'
 import TableBody from '@material-ui/core/TableBody'
 import TableHead from '@material-ui/core/TableHead'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import capitalize from 'lodash/fp/capitalize'
 import {
   REQUESTED,
   RECEIVED,
@@ -48,7 +49,7 @@ const PokemonModal = ({
           <Typography
             component='h1'
             variant='headline'
-          >{name}</Typography>
+          >{capitalize(name)}</Typography>
           <Grid container spacing={24}>
             <Grid item xs={12} sm={4} className='pokemon-modal-card-cover'>
               <img
@@ -78,14 +79,14 @@ const PokemonModal = ({
                     <TableCell>
                       <ul>
                         {abilities.map(abil => (
-                          <li key={abil}>{abil}</li>
+                          <li key={abil}>{capitalize(abil)}</li>
                         ))}
                       </ul>
                     </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>Species</TableCell>
-                    <TableCell>{species}</TableCell>
+                    <TableCell>{capitalize(species)}</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>Genera</TableCell>

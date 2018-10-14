@@ -13,6 +13,7 @@ import pink from '@material-ui/core/colors/pink'
 import purple from '@material-ui/core/colors/purple'
 import orange from '@material-ui/core/colors/orange'
 import yellow from '@material-ui/core/colors/yellow'
+import capitalize from 'lodash/fp/capitalize'
 
 const BG_COLORS = {
   black: grey[600],
@@ -48,7 +49,7 @@ const PokemonCard = ({
       />
       <CardContent className='pokemon-card-content'>
         <Typography component='h2' variant='headline'>
-          {name}
+          {capitalize(name)}
         </Typography>
         <Typography variant='caption' gutterBottom>
           {genera}
