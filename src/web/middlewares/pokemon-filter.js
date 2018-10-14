@@ -1,7 +1,12 @@
 import {
   UPDATE_FILTER,
+  DROP_FILTER,
   updateFilterItems
 } from '../actions/pokemon-filter'
+import {
+  changePaginationTotal,
+  resetCurrentPage
+} from '../actions/page'
 import defer from 'lodash/fp/defer'
 
 function filterPokemonItems (store) {
@@ -27,15 +32,25 @@ function filterPokemonItems (store) {
     .map(({ index }) => index)
 
   store.dispatch(updateFilterItems(filterResults))
-  console.log(filterResults)
+  store.dispatch(resetCurrentPage())
+  store.dispatch(changePaginationTotal(filterResults.length))
+}
+
+function afterDropFilter (store) {
+  const { pokemonList } = store.getState()
+
+  store.dispatch(resetCurrentPage())
+  store.dispatch(changePaginationTotal(pokemonList.items.length))
 }
 
 export default store => next => action => {
   switch (action.type) {
     case UPDATE_FILTER:
       defer(filterPokemonItems, store)
-      // fall through
-    default:
-      next(action)
+      break
+    case DROP_FILTER:
+      defer(afterDropFilter, store)
+      break
   }
+  next(action)
 }
