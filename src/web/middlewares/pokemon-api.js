@@ -11,6 +11,9 @@ import {
   failPokemonItem
 } from '../actions/pokemon'
 import {
+  setDisabled
+} from '../actions/pokemon-filter'
+import {
   changePaginationTotal
 } from '../actions/page'
 
@@ -77,6 +80,7 @@ export default store => next => action => {
             merged,
             action.id
           ))
+          store.dispatch(setDisabled(false))
         })
         .catch((e) => {
           console.warn(e)

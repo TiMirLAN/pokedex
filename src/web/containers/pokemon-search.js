@@ -10,7 +10,8 @@ import {
 } from '../actions/pokemon-filter'
 
 const mapStateToProps = ({ filter }) => ({
-  query: filter.quefy
+  query: filter.quefy,
+  disabled: filter.disabled
 })
 const debouncedOnSearch = debounce((query, dispatch) => {
   if (!query) {

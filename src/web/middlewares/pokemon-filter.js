@@ -1,7 +1,7 @@
 import {
   UPDATE_FILTER,
   DROP_FILTER,
-  updateFilterItems
+  updateFilterItems,
 } from '../actions/pokemon-filter'
 import {
   changePaginationTotal,
