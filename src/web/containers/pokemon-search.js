@@ -4,8 +4,8 @@ import {
 import debounce from 'lodash/debounce'
 import PokemonSearch from '../components/pokemon-search/pokemon-search'
 import {
-  updateSearch,
-  dropSearch
+  updateFilter,
+  dropFilter
 } from '../actions/pokemon-filter'
 
 const mapStateToProps = ({ filter }) => ({
@@ -13,9 +13,9 @@ const mapStateToProps = ({ filter }) => ({
 })
 const debouncedOnSearch = debounce((query, dispatch) => {
   if (!query) {
-    return dispatch(dropSearch())
+    return dispatch(dropFilter())
   }
-  dispatch(updateSearch(query, 'name'))
+  dispatch(updateFilter(query, 'name'))
 }, 300)
 
 const mapDispatchToProps = dispatch => ({

@@ -1,12 +1,12 @@
-export const UPDATE_SEARCH = 'UPDATE_SEARCH'
-export const DROP_SEARCH = 'DROP_SEARCH'
+export const UPDATE_FILTER = 'UPDATE_FILTER'
+export const DROP_FILTER = 'DROP_FILTER'
 
-export const updateSearch = (query, field) => ({
-  type: UPDATE_SEARCH,
+export const updateFilter = (query, field) => ({
+  type: UPDATE_FILTER,
   field,
   query
 })
 
-export const dropSearch = () => ({
-  type: DROP_SEARCH
+export const dropFilter = () => ({
+  type: DROP_FILTER
 })
