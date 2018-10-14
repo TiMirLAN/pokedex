@@ -1,7 +1,4 @@
 import {
-  RECEIVE_POKEMON_LIST
-} from '../actions/pokemon'
-import {
   CHANGE_CURRENT_PAGE,
   CHANGE_PAGINATION_TOTAL
 } from '../actions/page'
