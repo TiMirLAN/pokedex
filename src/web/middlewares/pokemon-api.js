@@ -33,6 +33,7 @@ export default store => next => action => {
         .then(({ data }) => {
           store.dispatch(receivePokemonList(data.results))
           store.dispatch(changePaginationTotal(data.results.length))
+          store.dispatch(setDisabled(false))
         })
         .catch((e) => {
           console.warn(e)
@@ -80,7 +81,6 @@ export default store => next => action => {
             merged,
             action.id
           ))
-          store.dispatch(setDisabled(false))
         })
         .catch((e) => {
           console.warn(e)
