@@ -7,10 +7,8 @@ import PokemonSearch from '../../containers/pokemon-search'
 
 const PokemonPage = () => (
   <div className='pokemon-page'>
+    <PokemonSearch/>
     <Grid container spacing={24}>
-      <Grid item xs={12}>
-        <PokemonSearch/>
-      </Grid>
       <PokemonList/>
       <Grid item xs={12}>
         <PokemonPagination/>
