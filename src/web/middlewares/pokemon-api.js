@@ -10,6 +10,12 @@ import {
   failPokemonList,
   failPokemonItem
 } from '../actions/pokemon'
+import {
+  setDisabled
+} from '../actions/pokemon-filter'
+import {
+  changePaginationTotal
+} from '../actions/page'
 
 const api = axios.create({
   baseURL: 'https://pokeapi.co/api/v2/'
@@ -26,6 +32,8 @@ export default store => next => action => {
         .get('pokemon/')
         .then(({ data }) => {
           store.dispatch(receivePokemonList(data.results))
+          store.dispatch(changePaginationTotal(data.results.length))
+          store.dispatch(setDisabled(false))
         })
         .catch((e) => {
           console.warn(e)

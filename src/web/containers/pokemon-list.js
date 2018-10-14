@@ -11,15 +11,21 @@ import {
   requestPokemonList
 } from '../actions/pokemon'
 
-const mapStateToProps = ({ pokemonList, page }) => {
-  return {
-    pokemonList: pokemonList
+const mapStateToProps = ({ pokemons, page, filter }) => {
+  let displayedPokemons = pokemons.items
+
+  if (filter.query) {
+    displayedPokemons = filter
       .items
+      .map(index => pokemons.items[index])
+  }
+  return {
+    pokemons: displayedPokemons
       .slice(
         page.offset,
         page.offset + page.perPage
       ),
-    listStatus: pokemonList.status
+    listStatus: pokemons.status
   }
 }
 const mapDispatchToProps = dispatch => ({

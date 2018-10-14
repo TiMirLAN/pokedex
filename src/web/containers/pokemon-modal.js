@@ -6,9 +6,9 @@ import {
   closeModal
 } from '../actions/pokemon-modal'
 
-const mapStateToProps = ({ modal, pokemonList }) => {
+const mapStateToProps = ({ modal, pokemons }) => {
   const pokemon = modal.pokemonId
-    ? pokemonList.items.find(({ id }) => modal.pokemonId === id)
+    ? pokemons.items.find(({ id }) => modal.pokemonId === id)
     : {}
 
   return {

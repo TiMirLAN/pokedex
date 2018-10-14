@@ -1,12 +1,14 @@
 import {
   combineReducers
 } from 'redux'
-import pokemonList from './pokemon-list'
+import pokemons from './pokemons'
 import page from './page'
 import modal from './pokemon-modal'
+import filter from './pokemon-filter'
 
 export default combineReducers({
-  pokemonList,
+  pokemons,
   page,
-  modal
+  modal,
+  filter
 })

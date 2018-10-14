@@ -9,9 +9,9 @@ import {
   FAILED
 } from '../../helpers/api-storage'
 
-const PokemonList = ({ pokemonList, listStatus }) => (
+const PokemonList = ({ pokemons, listStatus }) => (
   listStatus !== FAILED
-    ? pokemonList.map(pokemonItem => (
+    ? pokemons.map(pokemonItem => (
       <Grid item xs={12} sm={6} md={4} lg={3} key={pokemonItem.name}>
         <PokemonCard {...pokemonItem}/>
       </Grid>
@@ -23,7 +23,7 @@ const PokemonList = ({ pokemonList, listStatus }) => (
 )
 
 PokemonList.propTypes = {
-  pokemonList: PropTypes.arrayOf(
+  pokemons: PropTypes.arrayOf(
     PropTypes.object
   ).isRequired,
   listStatus: PropTypes.oneOf([
