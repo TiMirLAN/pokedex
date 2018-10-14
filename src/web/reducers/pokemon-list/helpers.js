@@ -1,4 +1,3 @@
-import capitalize from 'lodash/fp/capitalize'
 import flow from 'lodash/fp/flow'
 import map from 'lodash/fp/map'
 import find from 'lodash/fp/find'
@@ -11,7 +10,7 @@ import ballPng from '../../assets/ball.png'
 
 export function preparePokemonListItem (pokemonApiListItem) {
   return {
-    name: capitalize(pokemonApiListItem.name),
+    name: pokemonApiListItem.name,
     id: +pokemonApiListItem.url.slice(34, -1),
     types: ['???'],
     coverUrl: ballPng,
@@ -21,12 +20,12 @@ export function preparePokemonListItem (pokemonApiListItem) {
 
 const getTypes = flow(
   sortBy(t => t.slot),
-  map(t => capitalize(t.type.name))
+  map(t => t.type.name)
 )
 
 const getGenera = find(item => item.language.name === 'en')
 
-const getAbilities = map(item => capitalize(item.ability.name))
+const getAbilities = map(item => item.ability.name)
 
 const getStats = (stats) => (
   zip(
@@ -53,7 +52,7 @@ export function preparePokemonItem (pokemonApiItem) {
     coverUrl: sprites.front_default || ballPng,
     types: getTypes(types),
     abilities: getAbilities(abilities),
-    species: capitalize(species.name),
+    species: species.name,
     color: species.color.name,
     genera: getGenera(species.genera).genus,
     stats: { names, values },

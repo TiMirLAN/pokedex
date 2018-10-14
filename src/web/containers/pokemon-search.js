@@ -2,6 +2,7 @@ import {
   connect
 } from 'react-redux'
 import debounce from 'lodash/debounce'
+import toLower from 'lodash/fp/toLower'
 import PokemonSearch from '../components/pokemon-search/pokemon-search'
 import {
   updateFilter,
@@ -15,7 +16,7 @@ const debouncedOnSearch = debounce((query, dispatch) => {
   if (!query) {
     return dispatch(dropFilter())
   }
-  dispatch(updateFilter(query, 'name'))
+  dispatch(updateFilter(toLower(query), 'name'))
 }, 300)
 
 const mapDispatchToProps = dispatch => ({
