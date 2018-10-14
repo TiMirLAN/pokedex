@@ -11,10 +11,16 @@ import {
   requestPokemonList
 } from '../actions/pokemon'
 
-const mapStateToProps = ({ pokemonList, page }) => {
-  return {
-    pokemonList: pokemonList
+const mapStateToProps = ({ pokemonList, page, filter }) => {
+  let pokemons = pokemonList.items
+
+  if (filter.query) {
+    pokemons = filter
       .items
+      .map(index => pokemons[index])
+  }
+  return {
+    pokemonList: pokemons
       .slice(
         page.offset,
         page.offset + page.perPage
